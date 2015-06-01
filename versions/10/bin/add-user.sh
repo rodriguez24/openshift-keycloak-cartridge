@@ -68,5 +68,5 @@ JAVA_OPTS="$JAVA_OPTS"
 eval \"$JAVA\" $JAVA_OPTS \
          -jar \""$JBOSS_HOME"/jboss-modules.jar\" \
          -mp \""${JBOSS_MODULEPATH}"\" \
-         org.jboss.as.domain-add-user \
+         org.keycloak.keycloak-wildfly-adduser \
          '"$@"'
