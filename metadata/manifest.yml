@@ -1,7 +1,7 @@
 Name: wildfly
 Cartridge-Short-Name: WILDFLY
-Display-Name: WildFly Application Server 9
-Description: "The leading open source Java EE7 application server for enterprise Java applications. Popular development frameworks include CDI, DeltaSpike and Spring."
+Display-Name: Keycloak 1.2.0.Final
+Description: "Authentication and Authorization Server."
 Version: '9'
 Source-Url: https://github.com/openshift-cartridges/openshift-wildfly-cartridge/archive/wildfly-9.zip
 License: LGPL
@@ -85,12 +85,10 @@ Endpoints:
     Public-Port-Name:    HTTP_PROXY_PORT
     Protocols:
     - http
-    - ws
     Mappings:
     - Frontend: ''
       Backend: ''
-      Options:
-        websocket: true
+      Options: { tohttps: "" }
     - Frontend: /health
       Backend: ''
       Options:
