@@ -5,7 +5,6 @@
 <module xmlns="urn:jboss:module:1.1" name="org.twitter4j">
     <resources>
         <resource-root path="twitter4j-core-3.0.5.jar"/>
-        <!-- Insert resources here -->
     </resources>
     <dependencies>
         <module name="javax.api"/>

@@ -597,7 +597,7 @@ module.controller('RealmIdentityProviderCtrl', function($scope, $filter, $upload
         if (instance && instance.alias) {
 
         } else {
-            $scope.identityProvider.updateProfileFirstLogin = false;
+            $scope.identityProvider.updateProfileFirstLoginMode = "on";
         }
 
     };
@@ -645,7 +645,7 @@ module.controller('RealmIdentityProviderCtrl', function($scope, $filter, $upload
 
         } else {
             $scope.identityProvider.config.nameIDPolicyFormat = $scope.nameIdFormats[0].format;
-            $scope.identityProvider.updateProfileFirstLogin = false;
+            $scope.identityProvider.updateProfileFirstLoginMode = "off";
         }
     }
 
@@ -663,7 +663,7 @@ module.controller('RealmIdentityProviderCtrl', function($scope, $filter, $upload
         $scope.identityProvider.alias = providerFactory.id;
         $scope.identityProvider.providerId = providerFactory.id;
         $scope.identityProvider.enabled = true;
-        $scope.identityProvider.updateProfileFirstLogin = false;
+        $scope.identityProvider.updateProfileFirstLoginMode = "off";
         $scope.identityProvider.authenticateByDefault = false;
         $scope.newIdentityProvider = true;
     }
@@ -1176,7 +1176,7 @@ module.controller('RealmSMTPSettingsCtrl', function($scope, Current, Realm, real
     }
 });
 
-module.controller('RealmEventsConfigCtrl', function($scope, eventsConfig, RealmEventsConfig, RealmEvents, realm, serverInfo, $location, Notifications, TimeUnit, Dialog) {
+module.controller('RealmEventsConfigCtrl', function($scope, eventsConfig, RealmEventsConfig, RealmEvents, RealmAdminEvents, realm, serverInfo, $location, Notifications, TimeUnit, Dialog) {
     $scope.realm = realm;
 
     $scope.eventsConfig = eventsConfig;
@@ -1194,7 +1194,7 @@ module.controller('RealmEventsConfigCtrl', function($scope, eventsConfig, RealmE
     $scope.eventSelectOptions = {
         'multiple': true,
         'simple_tags': true,
-        'tags': serverInfo.eventTypes
+        'tags': serverInfo.enums['eventType']
     };
 
     var oldCopy = angular.copy($scope.eventsConfig);
@@ -1234,6 +1234,14 @@ module.controller('RealmEventsConfigCtrl', function($scope, eventsConfig, RealmE
             });
         });
     };
+    
+    $scope.clearAdminEvents = function() {
+        Dialog.confirmDelete($scope.realm.realm, 'admin-events', function() {
+            RealmAdminEvents.remove({ id : $scope.realm.realm }, function() {
+                Notifications.success("The admin events has been cleared.");
+            });
+        });
+    };
 });
 
 module.controller('RealmEventsCtrl', function($scope, RealmEvents, realm, serverInfo) {
@@ -1243,7 +1251,7 @@ module.controller('RealmEventsCtrl', function($scope, RealmEvents, realm, server
     $scope.eventSelectOptions = {
         'multiple': true,
         'simple_tags': true,
-        'tags': serverInfo.eventTypes
+        'tags': serverInfo.enums['eventType']
     };
 
     $scope.query = {
@@ -1302,6 +1310,105 @@ module.controller('RealmEventsCtrl', function($scope, RealmEvents, realm, server
     }
 
     $scope.update();
+});
+
+module.controller('RealmAdminEventsCtrl', function($scope, RealmAdminEvents, realm, serverInfo, $modal, $filter) {
+    $scope.realm = realm;
+    $scope.page = 0;
+
+    $scope.query = {
+    	id : realm.realm,
+        max : 5,
+        first : 0
+    }
+
+    $scope.adminEnabledEventOperationsOptions = {
+        'multiple': true,
+        'simple_tags': true,
+        'tags': serverInfo.enums['operationType']
+    };
+    
+    $scope.update = function() {
+    	$scope.query.first = 0;
+        for (var i in $scope.query) {
+            if ($scope.query[i] === '') {
+                delete $scope.query[i];
+           }
+        }
+        $scope.events = RealmAdminEvents.query($scope.query);
+    }
+    
+    $scope.reset = function() {
+    	$scope.query.first = 0;
+    	$scope.query.max = 5;
+    	$scope.query.operationTypes = '';
+    	$scope.query.resourcePath = '';
+    	$scope.query.authRealm = '';
+    	$scope.query.authClient = '';
+    	$scope.query.authUser = '';
+    	$scope.query.authIpAddress = '';
+    	$scope.query.dateFrom = '';
+    	$scope.query.dateTo = '';
+    	
+    	$scope.update();
+    }
+    
+    $scope.queryUpdate = function() {
+        for (var i in $scope.query) {
+            if ($scope.query[i] === '') {
+                delete $scope.query[i];
+           }
+        }
+        $scope.events = RealmAdminEvents.query($scope.query);
+    }
+    
+    $scope.firstPage = function() {
+        $scope.query.first = 0;
+        $scope.queryUpdate();
+    }
+
+    $scope.previousPage = function() {
+        $scope.query.first -= parseInt($scope.query.max);
+        if ($scope.query.first < 0) {
+            $scope.query.first = 0;
+        }
+        $scope.queryUpdate();
+    }
+
+    $scope.nextPage = function() {
+        $scope.query.first += parseInt($scope.query.max);
+        $scope.queryUpdate();
+    }
+
+    $scope.update();
+    
+    $scope.viewRepresentation = function(event) {
+        $modal.open({
+            templateUrl: resourceUrl + '/partials/modal/realm-events-admin-representation.html',
+            controller: 'RealmAdminEventsModalCtrl',
+            resolve: {
+                event: function () {
+                    return event;
+                }
+            }
+        })
+    }
+
+    $scope.viewAuth = function(event) {
+        $modal.open({
+            templateUrl: resourceUrl + '/partials/modal/realm-events-admin-auth.html',
+            controller: 'RealmAdminEventsModalCtrl',
+            resolve: {
+                event: function () {
+                    return event;
+                }
+            }
+        })
+    }
+});
+
+module.controller('RealmAdminEventsModalCtrl', function($scope, $filter, event) {
+    $scope.event = event;
 });
 
 module.controller('RealmBruteForceCtrl', function($scope, Realm, realm, $http, $location, Dialog, Notifications, TimeUnit) {

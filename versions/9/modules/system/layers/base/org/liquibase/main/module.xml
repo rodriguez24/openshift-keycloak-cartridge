@@ -4,8 +4,7 @@
 
 <module xmlns="urn:jboss:module:1.1" name="org.liquibase">
     <resources>
-        <resource-root path="liquibase-core-3.3.2.jar"/>
-        <!-- Insert resources here -->
+        <resource-root path="liquibase-core-3.3.5.jar"/>
     </resources>
     <dependencies>
         <module name="org.apache.commons.logging"/>

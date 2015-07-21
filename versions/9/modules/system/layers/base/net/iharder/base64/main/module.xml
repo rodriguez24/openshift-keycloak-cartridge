@@ -5,7 +5,6 @@
 <module xmlns="urn:jboss:module:1.1" name="net.iharder.base64">
     <resources>
         <resource-root path="base64-2.3.8.jar"/>
-        <!-- Insert resources here -->
     </resources>
     <dependencies>
         <module name="javax.api"/>

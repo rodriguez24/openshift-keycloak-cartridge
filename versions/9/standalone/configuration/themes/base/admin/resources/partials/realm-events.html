@@ -1,11 +1,12 @@
 <div class="col-sm-9 col-md-10 col-sm-push-3 col-md-push-2">
     <h1>
-        <span><strong>Events</strong> {{realm.realm|capitalize}}</span>
+        <span>Events</span>
         <kc-tooltip>Displays saved events for the realm. Events are related to user accounts, for example a user login. To enable persisted events go to config.</kc-tooltip>
     </h1>
 
     <ul class="nav nav-tabs">
-        <li data-ng-class="(path[2] == 'events') && 'active'"><a href="#/realms/{{realm.realm}}/events">View</a></li>
+        <li data-ng-class="(path[2] == 'events') && 'active'"><a href="#/realms/{{realm.realm}}/events">Login Events</a></li>
+        <li data-ng-class="(path[2] == 'admin-events') && 'active'"><a href="#/realms/{{realm.realm}}/admin-events">Admin Events</a></li>
         <li data-ng-class="(path[2] == 'events-settings') && 'active'"><a href="#/realms/{{realm.realm}}/events-settings">Config</a></li>
     </ul>
 
@@ -51,13 +52,13 @@
                     <div class="form-group" data-ng-show="filter">
                         <label class="col-md-2 control-label" for="dateFrom">Date (From)</label>
                         <div class="col-md-6">
-                            <input class="form-control" type="date" id="dateFrom" name="dateFrom" data-ng-model="query.dateFrom">
+                            <input class="form-control" type="text" id="dateFrom" name="dateFrom" data-ng-model="query.dateFrom" placeholder="yyyy-MM-dd">
                         </div>
                     </div>
                     <div class="form-group" data-ng-show="filter">
                         <label class="col-md-2 control-label" for="dateTo">Date (To)</label>
                         <div class="col-md-6">
-                            <input class="form-control" type="date" id="dateTo" name="dateTo" data-ng-model="query.dateTo">
+                            <input class="form-control" type="text" id="dateTo" name="dateTo" data-ng-model="query.dateTo" placeholder="yyyy-MM-dd">
                         </div>
                     </div>
 

@@ -5,7 +5,6 @@
 <module xmlns="urn:jboss:module:1.1" name="com.google.zxing.core">
     <resources>
         <resource-root path="core-2.2.jar"/>
-        <!-- Insert resources here -->
     </resources>
     <dependencies>
         <module name="javax.api"/>
