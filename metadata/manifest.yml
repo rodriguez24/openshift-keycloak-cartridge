@@ -85,7 +85,6 @@ Endpoints:
     Public-Port-Name:    HTTP_PROXY_PORT
     Protocols:
     - http
-    - ws
     Mappings:
     - Frontend: ''
       Backend: ''
