@@ -69,9 +69,6 @@
                 <logger category="com.arjuna">
                     <level name="WARN"/>
                 </logger>
-                <logger category="org.apache.tomcat.util.modeler">
-                    <level name="WARN"/>
-                </logger>
                 <logger category="org.jboss.as.config">
                     <level name="DEBUG"/>
                 </logger>
@@ -273,7 +270,7 @@
                 <endpoint/>
                 <http-connector name="http-remoting-connector" connector-ref="default" security-realm="ApplicationRealm"/>
             </subsystem>
-            <subsystem xmlns="urn:jboss:domain:resource-adapters:3.0"/>
+            <subsystem xmlns="urn:jboss:domain:resource-adapters:4.0"/>
             <subsystem xmlns="urn:jboss:domain:request-controller:1.0"/>
             <subsystem xmlns="urn:jboss:domain:sar:1.0"/>
             <subsystem xmlns="urn:jboss:domain:security:1.2">
@@ -366,9 +363,6 @@
                     <append value="true"/>
                 </periodic-rotating-file-handler>
                 <logger category="com.arjuna">
-                    <level name="WARN"/>
-                </logger>
-                <logger category="org.apache.tomcat.util.modeler">
                     <level name="WARN"/>
                 </logger>
                 <logger category="org.jboss.as.config">
@@ -604,7 +598,7 @@
                 <endpoint/>
                 <http-connector name="http-remoting-connector" connector-ref="default" security-realm="ApplicationRealm"/>
             </subsystem>
-            <subsystem xmlns="urn:jboss:domain:resource-adapters:3.0"/>
+            <subsystem xmlns="urn:jboss:domain:resource-adapters:4.0"/>
             <subsystem xmlns="urn:jboss:domain:request-controller:1.0"/>
             <subsystem xmlns="urn:jboss:domain:sar:1.0"/>
             <subsystem xmlns="urn:jboss:domain:security:1.2">
@@ -705,9 +699,6 @@
                     <append value="true"/>
                 </periodic-rotating-file-handler>
                 <logger category="com.arjuna">
-                    <level name="WARN"/>
-                </logger>
-                <logger category="org.apache.tomcat.util.modeler">
                     <level name="WARN"/>
                 </logger>
                 <logger category="org.jboss.as.config">
@@ -945,7 +936,7 @@
                 <endpoint/>
                 <http-connector name="http-remoting-connector" connector-ref="default" security-realm="ApplicationRealm"/>
             </subsystem>
-            <subsystem xmlns="urn:jboss:domain:resource-adapters:3.0"/>
+            <subsystem xmlns="urn:jboss:domain:resource-adapters:4.0"/>
             <subsystem xmlns="urn:jboss:domain:request-controller:1.0"/>
             <subsystem xmlns="urn:jboss:domain:sar:1.0"/>
             <subsystem xmlns="urn:jboss:domain:security:1.2">
@@ -1038,9 +1029,6 @@
                     <append value="true"/>
                 </periodic-rotating-file-handler>
                 <logger category="com.arjuna">
-                    <level name="WARN"/>
-                </logger>
-                <logger category="org.apache.tomcat.util.modeler">
                     <level name="WARN"/>
                 </logger>
                 <logger category="org.jboss.as.config">
@@ -1289,8 +1277,8 @@
                         <param name="direct-deliver" value="false"/>
                     </http-acceptor>
                     <in-vm-acceptor name="in-vm" server-id="0"/>
-                    <broadcast-group name="bg-group1" connectors="http-connector" jgroups-stack="udp" jgroups-channel="activemq-cluster"/>
-                    <discovery-group name="dg-group1" jgroups-stack="udp" jgroups-channel="activemq-cluster"/>
+                    <broadcast-group name="bg-group1" connectors="http-connector" jgroups-channel="activemq-cluster"/>
+                    <discovery-group name="dg-group1" jgroups-channel="activemq-cluster"/>
                     <cluster-connection name="my-cluster" address="jms" connector-name="http-connector" discovery-group="dg-group1"/>
                     <jms-queue name="ExpiryQueue" entries="java:/jms/queue/ExpiryQueue"/>
                     <jms-queue name="DLQ" entries="java:/jms/queue/DLQ"/>
@@ -1314,7 +1302,7 @@
                 <endpoint/>
                 <http-connector name="http-remoting-connector" connector-ref="default" security-realm="ApplicationRealm"/>
             </subsystem>
-            <subsystem xmlns="urn:jboss:domain:resource-adapters:3.0"/>
+            <subsystem xmlns="urn:jboss:domain:resource-adapters:4.0"/>
             <subsystem xmlns="urn:jboss:domain:request-controller:1.0"/>
             <subsystem xmlns="urn:jboss:domain:sar:1.0"/>
             <subsystem xmlns="urn:jboss:domain:security:1.2">

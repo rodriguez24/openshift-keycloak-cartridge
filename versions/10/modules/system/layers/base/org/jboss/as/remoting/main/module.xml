@@ -32,7 +32,7 @@
     </exports>
 
     <resources>
-        <resource-root path="wildfly-remoting-2.0.0.CR5.jar"/>
+        <resource-root path="wildfly-remoting-2.0.0.CR7.jar"/>
     </resources>
 
     <dependencies>

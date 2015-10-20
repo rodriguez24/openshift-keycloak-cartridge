@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="wildfly-threads-2.0.0.CR5.jar"/>
+        <resource-root path="wildfly-threads-2.0.0.CR7.jar"/>
     </resources>
 
     <dependencies>

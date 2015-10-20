@@ -99,9 +99,6 @@
             <logger category="com.arjuna">
                 <level name="WARN"/>
             </logger>
-            <logger category="org.apache.tomcat.util.modeler">
-                <level name="WARN"/>
-            </logger>
             <logger category="org.jboss.as.config">
                 <level name="DEBUG"/>
             </logger>
@@ -316,7 +313,7 @@
             <endpoint/>
             <http-connector name="http-remoting-connector" connector-ref="default" security-realm="ApplicationRealm"/>
         </subsystem>
-        <subsystem xmlns="urn:jboss:domain:resource-adapters:3.0">
+        <subsystem xmlns="urn:jboss:domain:resource-adapters:4.0">
             <resource-adapters>
                 <resource-adapter id="generic-jms-ra.rar">
                     <module slot="main" id="org.jboss.genericjms"/>
