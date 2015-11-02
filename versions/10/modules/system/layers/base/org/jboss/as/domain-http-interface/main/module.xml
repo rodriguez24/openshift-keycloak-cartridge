@@ -32,7 +32,7 @@
     </exports>
 
     <resources>
-        <resource-root path="wildfly-domain-http-interface-2.0.0.CR7.jar"/>
+        <resource-root path="wildfly-domain-http-interface-2.0.0.CR8.jar"/>
     </resources>
 
     <dependencies>

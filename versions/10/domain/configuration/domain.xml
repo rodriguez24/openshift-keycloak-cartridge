@@ -1399,7 +1399,9 @@
     <interfaces>
         <interface name="management"/>
         <interface name="public"/>
-        <interface name="unsecure"/>
+        <interface name="unsecure">
+            <inet-address value="${jboss.bind.address.unsecure:127.0.0.1}"/>
+        </interface>
     </interfaces>
     <socket-binding-groups>
         <socket-binding-group name="standard-sockets" default-interface="public">

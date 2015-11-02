@@ -29,12 +29,14 @@
     </properties>
 
     <resources>
-        <resource-root path="picketlink-common-2.5.5.Final.jar"/>
+        <resource-root path="picketlink-common-2.5.5.SP1.jar"/>
     </resources>
 
     <dependencies>
         <module name="javax.api"/>
         <module name="javax.xml.stream.api"/>
+        <module name="javax.xml.bind.api" />
+        <module name="javax.xml.ws.api" />
         <module name="org.jboss.logging"/>
     </dependencies>
 

@@ -567,7 +567,7 @@
                 </security-domain>
                 <security-domain name="sp" cache-type="default">
                     <authentication>
-                        <login-module code="org.picketlink.identity.federation.bindings.wildfly.SAML2LoginModule" flag="required"/>
+                        <login-module code="org.picketlink.identity.federation.bindings.jboss.auth.SAML2LoginModule" flag="required"/>
                     </authentication>
                 </security-domain>
             </security-domains>
@@ -621,12 +621,7 @@
         <interface name="public">
             <inet-address value="${jboss.bind.address:127.0.0.1}"/>
         </interface>
-        <!-- TODO - only show this if the jacorb subsystem is added  -->
         <interface name="unsecure">
-            <!--
-              ~  Used for IIOP sockets in the standard configuration.
-              ~                  To secure IIOP connections you need to setup SSL 
-              -->
             <inet-address value="${jboss.bind.address.unsecure:127.0.0.1}"/>
         </interface>
     </interfaces>
