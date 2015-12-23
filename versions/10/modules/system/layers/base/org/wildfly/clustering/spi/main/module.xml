@@ -28,13 +28,15 @@
     </properties>
 
     <resources>
-        <resource-root path="wildfly-clustering-spi-10.0.0.CR4.jar"/>
+        <resource-root path="wildfly-clustering-spi-10.0.0.CR5.jar"/>
     </resources>
 
     <dependencies>
         <module name="org.jboss.modules"/>
         <module name="org.jboss.msc"/>
+        <module name="org.wildfly.clustering.ejb.infinispan" services="import"/>
         <module name="org.wildfly.clustering.server" services="import"/>
         <module name="org.wildfly.clustering.service"/>
+        <module name="org.wildfly.clustering.web.infinispan" services="import"/>
     </dependencies>
 </module>

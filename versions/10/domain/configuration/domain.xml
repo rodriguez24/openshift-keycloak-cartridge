@@ -295,6 +295,14 @@
                             <policy-module code="Delegating" flag="required"/>
                         </authorization>
                     </security-domain>
+                    <security-domain name="jaspitest" cache-type="default">
+                        <authentication-jaspi>
+                            <login-module-stack name="dummy">
+                                <login-module code="Dummy" flag="optional"/>
+                            </login-module-stack>
+                            <auth-module code="Dummy"/>
+                        </authentication-jaspi>
+                    </security-domain>
                 </security-domains>
             </subsystem>
             <subsystem xmlns="urn:jboss:domain:security-manager:1.0">
@@ -622,6 +630,14 @@
                         <authorization>
                             <policy-module code="Delegating" flag="required"/>
                         </authorization>
+                    </security-domain>
+                    <security-domain name="jaspitest" cache-type="default">
+                        <authentication-jaspi>
+                            <login-module-stack name="dummy">
+                                <login-module code="Dummy" flag="optional"/>
+                            </login-module-stack>
+                            <auth-module code="Dummy"/>
+                        </authentication-jaspi>
                     </security-domain>
                 </security-domains>
             </subsystem>
@@ -960,6 +976,14 @@
                         <authorization>
                             <policy-module code="Delegating" flag="required"/>
                         </authorization>
+                    </security-domain>
+                    <security-domain name="jaspitest" cache-type="default">
+                        <authentication-jaspi>
+                            <login-module-stack name="dummy">
+                                <login-module code="Dummy" flag="optional"/>
+                            </login-module-stack>
+                            <auth-module code="Dummy"/>
+                        </authentication-jaspi>
                     </security-domain>
                 </security-domains>
             </subsystem>
@@ -1327,6 +1351,14 @@
                             <policy-module code="Delegating" flag="required"/>
                         </authorization>
                     </security-domain>
+                    <security-domain name="jaspitest" cache-type="default">
+                        <authentication-jaspi>
+                            <login-module-stack name="dummy">
+                                <login-module code="Dummy" flag="optional"/>
+                            </login-module-stack>
+                            <auth-module code="Dummy"/>
+                        </authentication-jaspi>
+                    </security-domain>
                 </security-domains>
             </subsystem>
             <subsystem xmlns="urn:jboss:domain:security-manager:1.0">
@@ -1399,6 +1431,9 @@
     <interfaces>
         <interface name="management"/>
         <interface name="public"/>
+        <interface name="private">
+            <inet-address value="${jboss.bind.address.private:127.0.0.1}"/>
+        </interface>
         <interface name="unsecure">
             <inet-address value="${jboss.bind.address.unsecure:127.0.0.1}"/>
         </interface>
@@ -1420,11 +1455,11 @@
             <socket-binding name="ajp" port="${jboss.ajp.port:8009}"/>
             <socket-binding name="http" port="${jboss.http.port:8080}"/>
             <socket-binding name="https" port="${jboss.https.port:8443}"/>
-            <socket-binding name="jgroups-mping" port="0" multicast-address="${jboss.default.multicast.address:230.0.0.4}" multicast-port="45700"/>
-            <socket-binding name="jgroups-tcp" port="7600"/>
-            <socket-binding name="jgroups-tcp-fd" port="57600"/>
-            <socket-binding name="jgroups-udp" port="55200" multicast-address="${jboss.default.multicast.address:230.0.0.4}" multicast-port="45688"/>
-            <socket-binding name="jgroups-udp-fd" port="54200"/>
+            <socket-binding name="jgroups-mping" interface="private" port="0" multicast-address="${jboss.default.multicast.address:230.0.0.4}" multicast-port="45700"/>
+            <socket-binding name="jgroups-tcp" interface="private" port="7600"/>
+            <socket-binding name="jgroups-tcp-fd" interface="private" port="57600"/>
+            <socket-binding name="jgroups-udp" interface="private" port="55200" multicast-address="${jboss.default.multicast.address:230.0.0.4}" multicast-port="45688"/>
+            <socket-binding name="jgroups-udp-fd" interface="private" port="54200"/>
             <socket-binding name="modcluster" port="0" multicast-address="224.0.1.105" multicast-port="23364"/>
             <socket-binding name="txn-recovery-environment" port="4712"/>
             <socket-binding name="txn-status-manager" port="4713"/>
@@ -1452,11 +1487,11 @@
             <socket-binding name="https" port="${jboss.https.port:8443}"/>
             <socket-binding name="iiop" interface="unsecure" port="3528"/>
             <socket-binding name="iiop-ssl" interface="unsecure" port="3529"/>
-            <socket-binding name="jgroups-mping" port="0" multicast-address="${jboss.default.multicast.address:230.0.0.4}" multicast-port="45700"/>
-            <socket-binding name="jgroups-tcp" port="7600"/>
-            <socket-binding name="jgroups-tcp-fd" port="57600"/>
-            <socket-binding name="jgroups-udp" port="55200" multicast-address="${jboss.default.multicast.address:230.0.0.4}" multicast-port="45688"/>
-            <socket-binding name="jgroups-udp-fd" port="54200"/>
+            <socket-binding name="jgroups-mping" interface="private" port="0" multicast-address="${jboss.default.multicast.address:230.0.0.4}" multicast-port="45700"/>
+            <socket-binding name="jgroups-tcp" interface="private" port="7600"/>
+            <socket-binding name="jgroups-tcp-fd" interface="private" port="57600"/>
+            <socket-binding name="jgroups-udp" interface="private" port="55200" multicast-address="${jboss.default.multicast.address:230.0.0.4}" multicast-port="45688"/>
+            <socket-binding name="jgroups-udp-fd" interface="private" port="54200"/>
             <socket-binding name="modcluster" port="0" multicast-address="224.0.1.105" multicast-port="23364"/>
             <socket-binding name="txn-recovery-environment" port="4712"/>
             <socket-binding name="txn-status-manager" port="4713"/>

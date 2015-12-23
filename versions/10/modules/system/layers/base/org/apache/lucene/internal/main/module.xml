@@ -28,8 +28,8 @@
     </properties>
 
     <resources>
-        <resource-root path="lucene-misc-5.3.0.jar"/>
-        <resource-root path="lucene-backward-codecs-5.3.0.jar"/>
+        <resource-root path="lucene-misc-5.3.1.jar"/>
+        <resource-root path="lucene-backward-codecs-5.3.1.jar"/>
     </resources>
 
     <dependencies>

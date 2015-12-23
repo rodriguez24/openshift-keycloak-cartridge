@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="txw2-2.2.11.jar"/>
+        <resource-root path="txw2-2.2.11.jbossorg-1.jar"/>
     </resources>
 
     <dependencies>

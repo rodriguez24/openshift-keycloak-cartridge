@@ -28,8 +28,8 @@
     </properties>
 
     <resources>
-        <resource-root path="artemis-ra-1.1.0.wildfly.007.jar"/>
-        <resource-root path="artemis-service-extensions-1.1.0.wildfly.007.jar"/>
+        <resource-root path="artemis-ra-1.1.0.wildfly-010.jar"/>
+        <resource-root path="artemis-service-extensions-1.1.0.wildfly-010.jar"/>
     </resources>
 
     <dependencies>
@@ -45,6 +45,6 @@
         <!-- allow to create a RA that connects to a remote Artemis server -->
         <module name="org.jboss.remote-naming" optional="true"/>
         <module name="org.jgroups"/>
-        <module name="org.wildfly.extension.messaging-activemq"/>
+        <module name="org.wildfly.extension.messaging-activemq" services="import"/>
     </dependencies>
 </module>

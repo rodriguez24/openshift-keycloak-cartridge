@@ -32,7 +32,7 @@
     </exports>
 
     <resources>
-        <resource-root path="wildfly-jpa-10.0.0.CR4.jar"/>
+        <resource-root path="wildfly-jpa-10.0.0.CR5.jar"/>
     </resources>
 
     <dependencies>
@@ -45,7 +45,6 @@
         <module name="javax.servlet.api" optional="true"/>
         <module name="javax.transaction.api"/>
         <module name="javax.validation.api"/>
-        <module name="org.apache.commons.collections"/>
         <module name="org.hibernate.validator" services="import"/>
         <module name="org.infinispan"/>
         <module name="org.jboss.common-beans"/>

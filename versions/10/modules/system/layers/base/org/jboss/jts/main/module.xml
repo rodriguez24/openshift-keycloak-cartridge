@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="narayana-jts-idlj-5.2.6.Final.jar"/>
+        <resource-root path="narayana-jts-idlj-5.2.9.Final.jar"/>
     </resources>
 
     <dependencies>

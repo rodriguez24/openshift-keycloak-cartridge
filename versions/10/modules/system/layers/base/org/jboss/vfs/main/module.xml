@@ -29,7 +29,7 @@
     </properties>
 
     <resources>
-        <resource-root path="jboss-vfs-3.2.9.Final.jar"/>
+        <resource-root path="jboss-vfs-3.2.11.Final.jar"/>
     </resources>
 
     <dependencies>

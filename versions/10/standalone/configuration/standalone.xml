@@ -438,6 +438,14 @@
                         <policy-module code="Delegating" flag="required"/>
                     </authorization>
                 </security-domain>
+                <security-domain name="jaspitest" cache-type="default">
+                    <authentication-jaspi>
+                        <login-module-stack name="dummy">
+                            <login-module code="Dummy" flag="optional"/>
+                        </login-module-stack>
+                        <auth-module code="Dummy"/>
+                    </authentication-jaspi>
+                </security-domain>
             </security-domains>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:singleton:1.0">
@@ -499,11 +507,14 @@
         <interface name="unsecure">
             <loopback-address value="${env.OPENSHIFT_WILDFLY_IP}"/>
         </interface>
+        <interface name="private">
+            <loopback-address value="${env.OPENSHIFT_WILDFLY_IP}"/>
+        </interface>
     </interfaces>
     <socket-binding-group name="standard-sockets" default-interface="public" port-offset="${jboss.socket.binding.port-offset:0}">
         <socket-binding name="management-http" interface="management" port="${jboss.management.http.port:9990}"/>
         <socket-binding name="management-https" interface="management" port="${jboss.management.https.port:9993}"/>
-        <socket-binding name="jgroups-tcp" port="${env.OPENSHIFT_WILDFLY_CLUSTER_PORT}"/>
+        <socket-binding name="jgroups-tcp" interface="private" port="${env.OPENSHIFT_WILDFLY_CLUSTER_PORT}"/>
         <socket-binding name="ajp" port="${jboss.ajp.port:8009}"/>
         <socket-binding name="http" port="${jboss.http.port:8080}"/>
         <socket-binding name="https" port="${jboss.https.port:8443}"/>
