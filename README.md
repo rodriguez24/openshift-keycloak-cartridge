@@ -14,9 +14,9 @@ You can also remove the pom.xml and /src directories and place a war file in the
 
 ### Create a new WildFly 10 app
 
-The following command can be used to create a new WildFly 10 app using the OpenShift [command line tools](https://www.openshift.com/get-started):
+There are a few ways to get started quickly on OpenShift. To create a new WildFly app using the OpenShift Web Console, click [here](https://openshift.redhat.com/app/console/application_type/cart!jboss-wildfly-10). If you'd like to create a new WildFly app directly from Eclipse, simply install the [JBoss OpenShift Tools](https://developers.openshift.com/en/getting-started-eclipse.html). If you'd like to use the OpenShift [command line tools](https://www.openshift.com/get-started) instead, the following command can be used:
 
-	rhc app create wildfly -s https://raw.githubusercontent.com/openshift-cartridges/openshift-wildfly-cartridge/wildfly-10/metadata/manifest.yml
+	rhc app create wildfly -s jboss-wildfly-10
 	
 It will take a few minutes to build, so be patient.
 
