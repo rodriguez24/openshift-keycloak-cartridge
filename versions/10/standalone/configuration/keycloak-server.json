@@ -1,4 +1,10 @@
 {
+    "truststore": {
+        "file": {
+            "file": "${jboss.server.config.dir}/keycloak.jks",
+            "password": "${env.TRUSTSTORE_PASSWORD}"
+        }
+    },
     "providers": [
         "classpath:${jboss.server.config.dir}/providers/*"
     ],

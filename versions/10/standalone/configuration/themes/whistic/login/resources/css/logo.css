@@ -1,0 +1,6 @@
+#kc-logo-wrapper {
+  background: url("https://s3-us-west-2.amazonaws.com/whistic/img_login/whistic-logo-square-500x500.png") no-repeat top right;
+  height: 125px;
+  width: 125px;
+  background-size: contain;
+}
