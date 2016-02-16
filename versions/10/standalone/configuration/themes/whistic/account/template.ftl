@@ -40,7 +40,7 @@
       <li class="landing_link">
         <#if referrer?has_content && referrer.url?has_content>
           <#--<li><a href="${referrer.url}" id="referrer">${msg("backTo",referrer.name)}</a></li>-->
-          <a href="${referrer.url}"><i class="fa fa-tachometer"></i> <span class="nav-label">${msg("backTo",referrer.name)}</span></a>
+          <a href="${referrer.url}"><i class="fa fa-tachometer"></i> <span class="nav-label">Back to Dashboard</span></a>
         <#else>
           <a href="https://www.whistic.com/#/dashboard/main"><i class="fa fa-tachometer"></i> <span class="nav-label">Back to Dashboard</span></a>
         </#if>
