@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>${msg("accountManagementTitle")}</title>
-  <link rel="icon" href="${url.resourcesPath}/img/favicon.ico">
+  <link rel="icon" href="https://s3-us-west-2.amazonaws.com/whistic/img/favicon-32x32-white-bg.png">
   <#if properties.styles?has_content>
     <#list properties.styles?split(' ') as style>
       <link href="${url.resourcesPath}/${style}" rel="stylesheet" />
@@ -37,8 +37,13 @@
     <#--<li class="<#if active=='sessions'>active</#if>"><a href="${url.sessionsUrl}">${msg("sessions")}</a></li>-->
     <#--<li class="<#if active=='applications'>active</#if>"><a href="${url.applicationsUrl}">${msg("applications")}</a></li>-->
     <#--<#if features.log><li class="<#if active=='log'>active</#if>"><a href="${url.logUrl}">${msg("log")}</a></li></#if>-->
-      <li>
-        <a href="https://www.whistic.com/#/dashboard/main"><i class="fa fa-tachometer"></i> <span class="nav-label">Back to Dashboard</span> </a>
+      <li class="landing_link">
+        <#if referrer?has_content && referrer.url?has_content>
+          <#--<li><a href="${referrer.url}" id="referrer">${msg("backTo",referrer.name)}</a></li>-->
+          <a href="${referrer.url}"><i class="fa fa-tachometer"></i> <span class="nav-label">${msg("backTo",referrer.name)}</span></a>
+        <#else>
+          <a href="https://www.whistic.com/#/dashboard/main"><i class="fa fa-tachometer"></i> <span class="nav-label">Back to Dashboard</span></a>
+        </#if>
       </li>
     </ul>
   </div>
@@ -61,9 +66,6 @@
                   </ul>
                 </div>
             <li>
-            </#if>
-            <#if referrer?has_content && referrer.url?has_content>
-              <li><a href="${referrer.url}" id="referrer">${msg("backTo",referrer.name)}</a></li>
             </#if>
             <li><a href="${url.logoutUrl}"><i class="fa fa-sign-out"></i> ${msg("doSignOut")}</a></li>
           </ul>
