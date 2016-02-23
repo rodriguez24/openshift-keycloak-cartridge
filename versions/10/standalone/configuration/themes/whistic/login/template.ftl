@@ -10,7 +10,8 @@
         </#list>
     </#if>
     <title><#nested "title"></title>
-    <link rel="icon" href="https://s3-us-west-2.amazonaws.com/whistic/img/favicon-32x32-white-bg.png" />
+    <link rel="icon" href="https://s3-us-west-2.amazonaws.com/whistic/img/favicon-32x32-white-bg.png">
+
     <#if properties.styles?has_content>
         <#list properties.styles?split(' ') as style>
             <link href="${url.resourcesPath}/${style}" rel="stylesheet" />
@@ -38,6 +39,18 @@
                 <div id="kc-header-wrapper" class="${properties.kcHeaderWrapperClass!}"><#nested "header"></div>
             </div>
 
+            <#if displayMessage && message?has_content>
+                <div id="kc-feedback" class="feedback-${message.type} ${properties.kcFeedBackClass!}">
+                    <div id="kc-feedback-wrapper">
+                        <span class="kc-feedback-text">${message.summary}</span>
+                    </div>
+                </div>
+            <#else>
+                <div id="kc-feedback-placeholder" class="${properties.kcFeedBackPlaceholderClass!}">
+                    <div id="kc-feedback-placeholder-wrapper"></div>
+                </div>
+            </#if>
+
             <#if realm.internationalizationEnabled>
                 <div id="kc-locale" class="${properties.kcLocaleClass!}">
                     <div id="kc-locale-wrapper" class="${properties.kcLocaleWrapperClass!}">
@@ -55,18 +68,6 @@
 
             <div id="kc-content" class="${properties.kcContentClass!}">
                 <div id="kc-content-wrapper" class="${properties.kcContentWrapperClass!}">
-
-                    <#if displayMessage && message?has_content>
-                        <div class="${properties.kcFeedbackAreaClass!}">
-                            <div class="alert alert-${message.type}">
-                                <#if message.type = 'success'><span class="${properties.kcFeedbackSuccessIcon}"></span></#if>
-                                <#if message.type = 'warning'><span class="${properties.kcFeedbackWarningIcon}"></span></#if>
-                                <#if message.type = 'error'><span class="${properties.kcFeedbackErrorIcon}"></span></#if>
-                                <span class="kc-feedback-text">${message.summary}</span>
-                            </div>
-                        </div>
-                    </#if>
-
                     <div id="kc-form" class="${properties.kcFormAreaClass!}">
                         <div id="kc-form-wrapper" class="${properties.kcFormAreaWrapperClass!}">
                             <#nested "form">
